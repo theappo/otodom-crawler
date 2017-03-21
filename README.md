@@ -1,5 +1,3 @@
-# otodom datasets
+# otodom.pl datasets
 
-This repository conatins datasets scrapped from otodom.pl. 
-
-The code used for scraping is in the folder.
+Dane pobrane 21.03.2017
