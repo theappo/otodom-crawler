@@ -8,14 +8,14 @@ from bs4 import BeautifulSoup
 
 #saves every print() output in *.txt file
 import sys
-sys.stdout=open("otodom_mieszkania_gdansk.txt","w")
+sys.stdout=open("otodom_mieszkania_gdansk_part2.txt","w")
 
 
-def spider(max_page, url):
+def spider(max_page):
     """ finds links to offers """
-    page = 1
+    page = 150
     while page <= max_page:
-        url = url + str(page)
+        url = "https://www.otodom.pl/sprzedaz/mieszkanie/gdansk/?page=" + str(page)
         source = requests.get(url)
         plain = source.text
         soup = BeautifulSoup(plain, "html.parser")
@@ -51,6 +51,10 @@ def get_data(url):
         print(add_text)
 
 
-spider(250, "https://otodom.pl/sprzedaz/mieszkanie/gdansk/?search%5Bdescription%5D=1&search%5Bdist%5D=0&page=")
+spider(380)
 
+
+#	"https://www.otodom.pl/sprzedaz/mieszkanie/gdansk/?page="
+#    40,   https://www.otodom.pl/sprzedaz/mieszkanie/sopot/?search%5Bdist%5D=0&page=2
+# 160, https://www.otodom.pl/sprzedaz/mieszkanie/gdynia/?search%5Bdescription%5D=1&search%5Bdist%5D=0&page=2
 sys.stdout.close()

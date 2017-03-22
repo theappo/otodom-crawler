@@ -7,6 +7,7 @@ import csv
 
 #opens the text file
 file = open('otodom_mieszkania_gdansk.txt', 'r')
+
 read_file = file.read()
 
 #list to split variables of each flat
@@ -15,8 +16,17 @@ nowa_lista = []
 #creates a list from the text file
 lista_mieszkań = [read_file.split("_!_!_")]
 
-#formatting
+jeszcze_jedna = []
+
 for mieszkanie in lista_mieszkań:
+    for x in mieszkanie:
+        koniec_tytułu = x.find("\n", 1)
+        x = x[koniec_tytułu:]
+        jeszcze_jedna.append([x])
+
+
+
+for mieszkanie in jeszcze_jedna:
     for i in mieszkanie:
 
         cena = i.find('cena') + 5
@@ -25,9 +35,7 @@ for mieszkanie in lista_mieszkań:
         powierzchnia = i.find('powierzchnia') + 13
         powierzchnia_koniec = i.find('liczba pokoi') - 4
         liczba_pokoi = i.find('liczba pokoi') + 13
-        liczba_pokoi_koniec = i.find('piętro') - 1
-        pietro = i.find('piętro') + 7
-        pietro_koniec = pietro + 1
+        liczba_pokoi_koniec = liczba_pokoi + 1
 
         adres1 = i.find('dzielnicaadres:') + 15
         adres1_koniec = i.find("k_ad") - 1
@@ -38,8 +46,15 @@ for mieszkanie in lista_mieszkań:
         nowa_lista.append(size)
         rooms = i[liczba_pokoi:liczba_pokoi_koniec]
         nowa_lista.append(rooms)
-        pietra = i[pietro:pietro_koniec]
-        nowa_lista.append(pietra)
+
+        pi = "piętro"
+        if pi in i:
+            pietro = i.find('piętro') + 7
+            pietro_koniec = pietro + 1
+            pietra = i[pietro:pietro_koniec]
+            nowa_lista.append(pietra)
+        else:
+            nowa_lista.append("NA")
 
         adres = i[adres1:adres1_koniec]
         nowa_lista.append(adres)
@@ -82,7 +97,7 @@ header = (['cena (zł)', 'powierzchnia', 'liczba pokoi', 'piętro', 'adres', "ry
            "dwupoziomowe", "oddzielna kuchnia", "klimatyzacja" ])
 
 #saves to *.csv format
-with open('mieszkania_gdansk.csv', 'w') as myfile:
+with open('otodom_gdansk.csv', 'w') as myfile:
     wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
     wr.writerow(header)
     for row in super_nowa_lista:
