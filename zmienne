@@ -1,14 +1,14 @@
 !UWAGA! Dane zawierają uszkodzone rekordy, kolumna - dzielnica.
 
-Dane zostały pobrane 21.03 i zawierają informacje o cenach i atrybutach mieszkań w miastach Gdańsk, Sopot i Gdynia.
-Skrypt może być użyty do pobrania danych również z innych miast na stronie.
+Dane zostały pobrane 21.03 i zawierają informacje o cenach i atrybutach ofert sprzedaży mieszkań w miastach Gdańsk, Sopot i Gdynia na stronie otodom.pl.
+Skrypt może być użyty do pobrania danych również z innych miast.
 
 Zmienne:
 
 1. cena (zł)
 2. powierzchnia - w metrach kwadratowych
 3. liczba pokoi
-4. piętro - "p" - parter, ">" - powyżej 10
+4. piętro/liczba apięter - od "p" - parter do 9, ">" - powyżej 10
 5. adres - dzielnica, nazwa miasta jeśli nie występuje
 6. rynek
 7. rodzaj zabudowy
