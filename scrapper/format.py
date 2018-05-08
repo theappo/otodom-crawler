@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Formatuje dane pobrane przez pajączka do #csv.
+Formatuje dane pobrane przez pajączka do *csv.
 """
 
 import re
